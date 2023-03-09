@@ -4,7 +4,7 @@ public class codigo4 {
     public static int p1 = 0, p2 = 0;
     public static int games = 1;
 
-    public static boolean victory(char[][] velha) {
+    public static int victory() {
         if (velha[0][0] == 'x' && velha[0][1] == 'x' && velha[0][2] == 'x') {
             p1++;
         } else if (velha[1][0] == 'x' && velha[1][1] == 'x' && velha[1][2] == 'x') {
@@ -29,9 +29,16 @@ public class codigo4 {
             p2++;
         } else if (velha[2][0] == 'o' && velha[2][1] == 'o' && velha[2][2] == 'o') {
             p2++;
+        } else if (velha[0][0] == 'o' && velha[1][1] == 'o' && velha[2][2] == 'o') {
+            p2++;
+        } else if (velha[0][2] == 'o' && velha[1][1] == 'o' && velha[2][0] == 'o') {
+            p2++;
+        } else if (velha[0][0] == 'x' && velha[1][1] == 'x' && velha[2][2] == 'x') {
+            p1++;
+        } else if (velha[0][2] == 'x' && velha[1][1] == 'x' && velha[2][0] == 'x') {
+            p1++;
         }
     }
-}
     public static void main(String[] args) {
         boolean keep_Going = true;
         char keep = ' ';
@@ -40,7 +47,7 @@ public class codigo4 {
         int p1a = p1, p2a = p2;
         Scanner ler = new Scanner(System.in);
         char[][] velha = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' }};
-        do {;
+        do {
             for (i=0;i<9;i++) {
                 if (p1a != p1 || p2a != p2)
                     break;
@@ -59,7 +66,7 @@ public class codigo4 {
                     velha[x][y] = 'x';
                 else
                     velha[x][y] = 'o';
-            
+                victory();
                 games++;
                 
 
@@ -69,4 +76,5 @@ public class codigo4 {
         if (keep != ' ')
             break;
     } while (keep_Going == true);
+    }
 }
