@@ -3,8 +3,11 @@ import java.util.Scanner;
 public class codigo4 {
     public static int p1 = 0, p2 = 0;
     public static int games = 1;
+    public static char[][] velha = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' }};
+    public static Scanner ler = new Scanner(System.in);
+    public static int p1a = p1, p2a = p2;
 
-    public static int victory() {
+    public static int victory(int p1, p2) {
         if (velha[0][0] == 'x' && velha[0][1] == 'x' && velha[0][2] == 'x') {
             p1++;
         } else if (velha[1][0] == 'x' && velha[1][1] == 'x' && velha[1][2] == 'x') {
@@ -44,9 +47,6 @@ public class codigo4 {
         char keep = ' ';
         int i = 0;
         int x = 0, y = 0;
-        int p1a = p1, p2a = p2;
-        Scanner ler = new Scanner(System.in);
-        char[][] velha = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' }};
         do {
             for (i=0;i<9;i++) {
                 if (p1a != p1 || p2a != p2)
@@ -66,15 +66,15 @@ public class codigo4 {
                     velha[x][y] = 'x';
                 else
                     velha[x][y] = 'o';
-                victory();
+                victory(p1, p2);
                 games++;
                 
 
         }
         System.out.printf("Continue? Press any key to stop ");
-        keep = ler.next();
+        keep = ler.next().charAt(0);
         if (keep != ' ')
-            break;
+            keep_Going = false;
     } while (keep_Going == true);
     }
 }
